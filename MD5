@@ -1,4 +1,4 @@
-dd1f2bc542558d1df9c06bb371532e1a *DESCRIPTION
+372a0a6b12bf4b32faa8f98ee37f3e14 *DESCRIPTION
 27b2d1e7a496ef86d6f0d15f18b7c980 *NAMESPACE
 e652b0649858274e6a0f704bce28f6e8 *R/MuteRate.r
 4b93a54bb7ceb95e5c9153c8058dab7f *R/RLT.r
@@ -11,8 +11,9 @@ d4aaf55a9bf0f910ca663d03b09cb9e3 *inst/CITATION
 9050feaa4b5604b53796d7a684b2a0d5 *man/RLT.Rd
 ae1f83d81af4773613253b8e88a1246b *man/predict.RLT.Rd
 308d98ba5acc87fc8038ecc0936fa053 *man/print.RLT.Rd
-b74dc1ddb59ed45f4a508624ad4d00ca *src/Makevars
-4dfaccb6937c4bfa69e3269df55d668e *src/RLT.c
+b4227b295db8b1d1466c95675f04bf9f *src/Makevars
+d445027d176f64827ec473cd1ebca67d *src/Makevars.win
+7cc1003909025f47d0c63910839ac983 *src/RLT.c
 bb777c68b48f6761c897c024e1c3a08f *src/RLT.h
 ad5c2e6e2b1114c599762fcf1930c7a6 *src/RLT_classification.c
 c7ed2a9ea040a503a00b663a0b5c7533 *src/RLT_regression.c

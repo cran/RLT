@@ -217,7 +217,7 @@ SEXP RLT_regression(SEXP datasetX_R,
 	SET_VECTOR_ELT(set_name_r, 6, mkChar("NumOfComb"));	// number of x combination
 	SET_VECTOR_ELT(set_name_r, 7, mkChar("SplitValue"));// splitting value
 
-	char str[10];
+	char str[20];
 
 	for (i = 0; i < combsplit; i ++)
 	{
@@ -594,7 +594,7 @@ SEXP RLT_classification(SEXP datasetX_R,
 	SET_VECTOR_ELT(set_name_r, 6, mkChar("NumOfComb"));	// number of x combination
 	SET_VECTOR_ELT(set_name_r, 7, mkChar("SplitValue"));// splitting value
 
-	char str[10];
+	char str[20];
 
 	for (i = 0; i < combsplit; i ++)
 	{
@@ -1052,7 +1052,7 @@ SEXP RLT_survival(SEXP datasetX_R,
 	SET_VECTOR_ELT(set_name_r, 6, mkChar("NumOfComb"));	// number of x combination
 	SET_VECTOR_ELT(set_name_r, 7, mkChar("SplitValue"));// splitting value
 
-	char str[10];
+	char str[20];
 
 	for (i = 0; i < combsplit; i ++)
 	{
