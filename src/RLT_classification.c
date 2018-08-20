@@ -43,7 +43,6 @@
 # include <Rmath.h>
 # include <Rversion.h>
 
-# include <S.h>
 # include <time.h>
 # include <math.h>
 # include <stdio.h>

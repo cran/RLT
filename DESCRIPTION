@@ -1,6 +1,6 @@
 Package: RLT
-Version: 3.2.1
-Date: 2017-11-17
+Version: 3.2.2
+Date: 2018-08-20
 Title: Reinforcement Learning Trees
 Author: Ruoqing Zhu <teazrq@gmail.com>
 Maintainer: Ruoqing Zhu <teazrq@gmail.com>
@@ -10,6 +10,6 @@ License: GPL (>= 2)
 URL: https://cran.r-project.org/package=RLT
 NeedsCompilation: yes
 Repository: CRAN
-RoxygenNote: 6.0.1
-Packaged: 2017-11-18 22:34:47 UTC; teazr
-Date/Publication: 2017-11-19 17:27:33 UTC
+RoxygenNote: 6.1.0
+Packaged: 2018-08-20 17:52:34 UTC; Ruoqing Zhu
+Date/Publication: 2018-08-20 18:10:02 UTC

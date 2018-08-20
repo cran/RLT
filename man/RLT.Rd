@@ -5,16 +5,17 @@
 \title{Main function of reinforcement learning trees}
 \usage{
 RLT(x, y, censor = NULL, model = "regression", print.summary = 0,
-  use.cores = 1, ntrees = if (reinforcement) 100 else 500, mtry = max(1,
-  as.integer(ncol(x)/3)), nmin = max(1, as.integer(log(nrow(x)))),
-  alpha = 0.4, split.gen = "random", nsplit = 1, resample.prob = 0.9,
-  replacement = TRUE, npermute = 1, select.method = "var",
-  subject.weight = NULL, variable.weight = NULL, track.obs = FALSE,
-  importance = TRUE, reinforcement = FALSE, muting = -1,
-  muting.percent = if (reinforcement) MuteRate(nrow(x), ncol(x), speed =
-  "aggressive", info = FALSE) else 0, protect = as.integer(log(ncol(x))),
-  combsplit = 1, combsplit.th = 0.25, random.select = 0, embed.n.th = 4
-  * nmin, embed.ntrees = max(1, -atan(0.01 * (ncol(x) - 500))/pi * 100 + 50),
+  use.cores = 1, ntrees = if (reinforcement) 100 else 500,
+  mtry = max(1, as.integer(ncol(x)/3)), nmin = max(1,
+  as.integer(log(nrow(x)))), alpha = 0.4, split.gen = "random",
+  nsplit = 1, resample.prob = 0.9, replacement = TRUE,
+  npermute = 1, select.method = "var", subject.weight = NULL,
+  variable.weight = NULL, track.obs = FALSE, importance = TRUE,
+  reinforcement = FALSE, muting = -1, muting.percent = if
+  (reinforcement) MuteRate(nrow(x), ncol(x), speed = "aggressive", info =
+  FALSE) else 0, protect = as.integer(log(ncol(x))), combsplit = 1,
+  combsplit.th = 0.25, random.select = 0, embed.n.th = 4 * nmin,
+  embed.ntrees = max(1, -atan(0.01 * (ncol(x) - 500))/pi * 100 + 50),
   embed.resample.prob = 0.8, embed.mtry = 1/2,
   embed.nmin = as.integer(nrow(x)^(1/3)), embed.split.gen = "random",
   embed.nsplit = 1)
