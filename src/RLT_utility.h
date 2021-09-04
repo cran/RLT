@@ -179,10 +179,6 @@ typedef struct _struct_ifc
 	int* clist;
 } struct_ifc;
 
-
-void copyParameters(PARAMETERS* myPara, SEXP parameters_int, SEXP parameters_double);
-void printParameters(PARAMETERS* myPara);
-
 // random generating
 
 int random_in_range( int min, int max);

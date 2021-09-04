@@ -35,14 +35,7 @@
 //  **********************************************************************
 
 # include <string.h>
-# include <Rconfig.h>
-# include <Rdefines.h>
-# include <Rembedded.h>
-# include <R.h>
-# include <Rinternals.h>
-# include <Rmath.h>
-# include <Rversion.h>
-
+# include <S.h>
 # include <time.h>
 # include <math.h>
 # include <stdio.h>
@@ -54,6 +47,17 @@
 
 // model fitting functions
 # include "RLT.h"
+
+// R functions
+# include <Rconfig.h>
+# include <Rdefines.h>
+# include <Rembedded.h>
+# include <R.h>
+# include <Rinternals.h>
+# include <Rmath.h>
+# include <Rversion.h>
+
+
 
 void Fit_Trees_survival(double** dataX_matrix,
 						  int* dataY_vector,

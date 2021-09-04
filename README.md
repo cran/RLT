@@ -1,2 +1,0 @@
-# RLT
-Reinforcement Learning Trees

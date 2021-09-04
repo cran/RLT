@@ -35,14 +35,7 @@
 //  **********************************************************************
 
 # include <string.h>
-# include <Rconfig.h>
-# include <Rdefines.h>
-# include <Rembedded.h>
-# include <R.h>
-# include <Rinternals.h>
-# include <Rmath.h>
-# include <Rversion.h>
-
+# include <S.h>
 # include <time.h>
 # include <math.h>
 # include <stdio.h>
@@ -54,6 +47,17 @@
 
 // model fitting functions
 # include "RLT.h"
+
+// R functions
+# include <Rconfig.h>
+# include <Rdefines.h>
+# include <Rembedded.h>
+# include <R.h>
+# include <Rinternals.h>
+# include <Rmath.h>
+# include <Rversion.h>
+
+
 
 void Fit_Trees_classification(double** dataX_matrix,
 							  int* dataY_vector,
@@ -883,52 +887,71 @@ DoASingleSplit:;
 
 		int x_cat;
 		int real_mtry = imin(mtry, totalp);
-		double* allVarWeight = NULL;
-		int* allVar = NULL;
+		int* allVar = (int *) malloc(node_p * sizeof(int));
+
+		for (j = 0; j<node_p; j++)
+			allVar[j] = usevariable[j];
+
+		// if use variable weights, we need a base score
+
+		double basescore = 0;
 
 		if (use_var_weight)
 		{
-			allVarWeight = (double *) malloc(node_p * sizeof(double));
-			for (j = 0; j<node_p; j++)
-				allVarWeight[j] = variableweight[usevariable[j]];
+			if (use_sub_weight)
+			{
+				double* Yweights = (double *) calloc(nclass, sizeof(double));
+				double totalweights = 0;
 
-			standardize(allVarWeight, node_p);
-		}else{
-			allVar = (int *) malloc(node_p * sizeof(int));
-			for (j = 0; j<node_p; j++)
-				allVar[j] = usevariable[j];
+				for (i =0; i<node_n; i++)
+					Yweights[dataY_vector[useObs[i]]] += subjectweight[useObs[i]];
+
+				for (i =0; i<nclass; i++)
+					totalweights += Yweights[i];
+
+				for (i=0; i< nclass; i++)
+					basescore += Yweights[i]*Yweights[i];
+
+				basescore = basescore/totalweights;
+
+				free(Yweights);
+			}else{
+				int* Ycounts = (int *) calloc(nclass, sizeof(int));
+
+				for (i =0; i<node_n; i++)
+				  Ycounts[dataY_vector[useObs[i]]]++;
+
+				for (i=0; i< nclass; i++)
+					basescore += Ycounts[i]*Ycounts[i];
+
+				basescore = basescore/node_n;
+
+				free(Ycounts);
+			}
 		}
 
+		// start to search for the best split
 		while( real_mtry > 0 )	// randomly sample a variable
 		{
-			if (use_var_weight)
-			{
-				use_var = usevariable[sample(allVarWeight, node_p)];
-			}else{
-				randVar = random_in_range(0, totalp);
-				use_var = allVar[randVar];	// sample a splitting variable
-				allVar[randVar] = allVar[totalp-1];
-				totalp --;
-			}
-
+			randVar = random_in_range(0, totalp);
+			use_var = allVar[randVar];	// sample a splitting variable
+			allVar[randVar] = allVar[totalp-1];
+			totalp --;
 			real_mtry --;
 
 			if(CheckIdentical_d(dataX_matrix[use_var], useObs, node_n) == 0)
 			{
-
 				x_cat = ncat[use_var];
-				// Rprintf("get variable %i \n", use_var);
 
 				if (x_cat > 1) // for a categorical variable
 				{
-					// Rprintf("Variable %i is a categorical variable \n", use_var+1);
 					OneSplit_Cat_classification(&tempValue, &tempScore, dataX_matrix[use_var], dataY_vector, subjectweight, useObs, use_sub_weight, x_cat, node_n, nclass, split_gen, nspliteach, nmin);
-					// Rprintf("Variable %i is a categorical variable, get score is %f \n", use_var+1, tempScore);
 				}else{
-					// Rprintf("Variable %i is a continuous variable \n", use_var+1);
 					OneSplit_Cont_classification(&tempValue, &tempScore, dataX_matrix[use_var], dataY_vector, subjectweight, useObs, use_sub_weight, node_n, nclass, split_gen, nspliteach, nmin);
-					// Rprintf("Variable %i is a continuous variable, get score is %f \n", use_var+1, tempScore);
 				}
+
+				if (use_var_weight)
+					tempScore = (tempScore - basescore)*variableweight[use_var];
 
 				if (tempScore > bestScore)
 				{
@@ -946,12 +969,7 @@ DoASingleSplit:;
 			OneSplit->SplitValue = bestValue;
 		}
 
-		if (use_var_weight)
-		{
-			free(allVarWeight);
-		}else{
-			free(allVar);
-		}
+		free(allVar);
 	}
 
 	return(OneSplit);
@@ -1954,6 +1972,7 @@ double score_at_cut_cla_w(double* x, int* y, double* weights, int* useObs, int n
 	double leftweight = 0;
 	double rightweight = 0;
 
+	// calculate counts of each category on left and right
 	for (i =0; i<n; i++)
 	{
 		if (x[useObs[i]] <= a_random_cut)
@@ -1964,12 +1983,14 @@ double score_at_cut_cla_w(double* x, int* y, double* weights, int* useObs, int n
 		}
 	}
 
+	// calculate the sum of counts
 	for (i =0; i<nclass; i++)
 	{
 		leftweight += YLeft[i];
 		rightweight += YRight[i];
 	}
 
+	// calculate the score
 	if (leftweight > 0 && rightweight >0)
 	{
 		double tempLeft = 0;

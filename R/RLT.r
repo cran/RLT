@@ -243,7 +243,7 @@ RLT <- function(x, y, censor = NULL, model = "regression",
 	if (any(subject.weight<=0)) {warning("Subject weights cannot be 0 or negative, reset to equal weights"); subject.weight = rep(1/n, n); use.sub.weight = FALSE}
 	storage.mode(subject.weight) <- "double"
 
-	use.var.weight = !is.null(variable.weight)	# variable weights for mtry
+	use.var.weight = !is.null(variable.weight)	# variable weights to penalize the score at each split
 	if (is.null(variable.weight)) variable.weight = rep(1/p, p) else variable.weight = variable.weight/sum(variable.weight)
 	if (length(variable.weight) != p) {warning("Variable weights length must by p, reset to equal weights"); subject.weight = rep(1/p, p); use.var.weight = FALSE}
 	if (any(variable.weight<0)) {warning("Variable weights cannot be negative, reset to equal weights"); subject.weight = rep(1/p, p); use.var.weight = FALSE}

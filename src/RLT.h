@@ -34,8 +34,15 @@
 //
 //  **********************************************************************
 
+# include <Rinternals.h>
+
 #ifndef RLT_reg
 #define RLT_reg
+
+// parameters
+
+void copyParameters(PARAMETERS* myPara, SEXP parameters_int, SEXP parameters_double);
+void printParameters(PARAMETERS* myPara);
 
 // regression model
 

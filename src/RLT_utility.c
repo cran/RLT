@@ -35,14 +35,7 @@
 //  **********************************************************************
 
 # include <string.h>
-# include <Rconfig.h>
-# include <Rdefines.h>
-# include <Rembedded.h>
-# include <R.h>
-# include <Rinternals.h>
-# include <Rmath.h>
-# include <Rversion.h>
-
+# include <S.h>
 # include <time.h>
 # include <math.h>
 # include <stdio.h>
@@ -52,6 +45,14 @@
 // tool functions
 # include "RLT_utility.h"
 
+// R functions
+# include <Rconfig.h>
+# include <Rdefines.h>
+# include <Rembedded.h>
+# include <R.h>
+# include <Rinternals.h>
+# include <Rmath.h>
+# include <Rversion.h>
 
 // parameters structure and print function//
 
