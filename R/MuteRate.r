@@ -7,7 +7,7 @@
 #' @return A suggested muting rate
 #' @examples
 #' MuteRate(500, 100, speed = "aggressive")
-
+#' @export
 MuteRate <- function(N, P, speed = NULL, info = FALSE)
 {
 	if (is.null(speed)) cat("please specify `speed`: moderate or aggressive")

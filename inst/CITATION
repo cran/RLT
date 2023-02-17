@@ -1,56 +1,20 @@
-citHeader("To cite RLT in publications use:")
+bibentry(bibtype = "Article",
+  title        = "Reinforcement Learning Trees",
+  author       = c(person(given = "Ruoqing", family = "Zhu"),
+                   person(given = "Donglin", family = "Zeng"),
+                   person(given = c("Michael", "R."), family = "Kosorok")),
+  journal      = "Journal of the American Statistical Association",
+  year         = "2015",
+  volume       = "110",
+  number       = "512",
+  pages        = "1770--1784",
+  doi          = "10.1080/01621459.2015.1036994",
 
-titl <- meta$Title
-year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
-vers <- paste("R package version", meta$Version)
-
-citEntry(entry="Manual",
-         title = paste("RLT:", titl, sep = " "),
-         author = personList(person(family="Zhu", given="R.")),
-	 publisher = "manual",
-         year         = year,
-         note         = vers,
-         url          = "https://cran.r-project.org/package=RLT",
-         pdf          = "https://cran.r-project.org/web/packages/RLT/RLT.pdf",
-         textVersion =
-         paste("Zhu R. (",year ,"). ",
-               titl, ", ", vers, ".", sep=""))
-
-citEntry(entry="Article",
-         title  = "Reinforcement Learning Trees",
-         author = personList(person(family="Zhu", given="Ruoqing"),
-	                           person(family="Zeng", given="Donglin"),
-	                           person(family="Kosorok", given="Michael R.")),
-	       journal      = "Journal of the American Statistical Association",
-         year         = "2015",
-         volume       = "110",
-         number       = "512",
-         pages        = "1770-1784",
-         doi          = "10.1080/01621459.2015.1036994",
-         url          = "http://dx.doi.org/10.1080/01621459.2015.1036994",
-
-         textVersion =
-         paste("Zhu, R., Zeng, D., & Kosorok, M. R. (2015). ",
-               "Reinforcement learning trees. ",
-               "Journal of the American Statistical Association, 110(512), 1770-1784.",
-               sep=""))
-
-citEntry(entry="Article",
-         title  = "Recursively imputed survival trees",
-         author = personList(person(family="Zhu", given="Ruoqing"),
-	                           person(family="Kosorok", given="Michael R.")),
-
-	       journal      = "Journal of the American Statistical Association",
-         year         = "2012",
-         volume       = "107",
-         number       = "497",
-         pages        = "331-340",
-         doi          = "10.1080/01621459.2011.637468",
-         url          = "http://dx.doi.org/10.1080/01621459.2011.637468",
-
-         textVersion =
-         paste("Zhu, R. & Kosorok, M. R. (2012). ",
-               "Recursively imputed survival trees. ",
-               "Journal of the American Statistical Association, 107(497), 331-340.",
-               sep=""))
+  header       = "The original paper:",
+  textVersion  =
+  paste("Ruoqing Zhu, Donglin Zeng & Michael R. Kosork (2015).",
+        "Reinforcement Learning Trees",
+        "Journal of the American Statistical Association 110, no. 512 (2015): 1770-1784.",
+        "doi:10.1080/01621459.2015.1036994")
+)
 

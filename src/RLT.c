@@ -222,9 +222,10 @@ SEXP RLT_regression(SEXP datasetX_R,
 
 	for (i = 0; i < combsplit; i ++)
 	{
-		sprintf(str, "SplitVar%d", i+1);
+	  snprintf(str, sizeof(str), "SplitVar%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i, mkChar(str)); 			// x var
-		sprintf(str, "Loading%d", i+1);
+
+		snprintf(str, sizeof(str), "Loading%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i+combsplit, mkChar(str));	// x loading
 	}
 
@@ -599,15 +600,16 @@ SEXP RLT_classification(SEXP datasetX_R,
 
 	for (i = 0; i < combsplit; i ++)
 	{
-		sprintf(str, "SplitVar%d", i+1);
+	  snprintf(str, sizeof(str), "SplitVar%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i, mkChar(str)); 			// x var
-		sprintf(str, "Loading%d", i+1);
+
+		snprintf(str, sizeof(str), "Loading%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i+combsplit, mkChar(str));	// x loading
 	}
 
 	for (i = 0; i < nclass; i ++)
 	{
-		sprintf(str, "Class%d", i);
+	  snprintf(str, sizeof(str), "Class%d", i);
 		SET_VECTOR_ELT(set_name_r, 8 + 2*combsplit + i, mkChar(str)); // y class
 	}
 
@@ -1057,9 +1059,10 @@ SEXP RLT_survival(SEXP datasetX_R,
 
 	for (i = 0; i < combsplit; i ++)
 	{
-		sprintf(str, "SplitVar%d", i+1);
+	  snprintf(str, sizeof(str), "SplitVar%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i, mkChar(str)); 			// x var
-		sprintf(str, "Loading%d", i+1);
+
+		snprintf(str, sizeof(str), "Loading%d", i+1);
 		SET_VECTOR_ELT(set_name_r, 8+i+combsplit, mkChar(str));	// x loading
 	}
 

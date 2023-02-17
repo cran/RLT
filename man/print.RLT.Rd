@@ -11,6 +11,9 @@
 
 \item{...}{...}
 }
+\value{
+No return value
+}
 \description{
 Print a RLT object
 }

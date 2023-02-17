@@ -2,12 +2,13 @@
 #' @description Print a RLT object
 #' @param x A fitted RLT object
 #' @param ... ...
+#' @return No return value
 #' @examples
 #' x = matrix(rnorm(100), ncol = 10)
 #' y = rowMeans(x)
 #' fit = RLT(x, y, ntrees = 5)
 #' fit
-
+#' @export
 print.RLT<- function(x, ...)
 {
   cat("Reinforcement Learning Trees for", x$model, "model:\n")

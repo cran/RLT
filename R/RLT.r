@@ -1,4 +1,4 @@
-#' @title Main function of reinforcement learning trees
+#' @title Reinforcement Learning Trees
 #' @description Fit models for regression, classification and survival analysis using reinforced splitting rules
 #' @param x A matrix or data.frame for features
 #' @param y Response variable, a numeric/factor vector or a Surv object
@@ -8,7 +8,7 @@
 #' @param use.cores Number of cores
 #' @param ntrees Number of trees, \code{ntrees = 100} if use reinforcement, \code{ntrees = 1000} otherwise
 #' @param mtry Number of variables used at each internal node, only for \code{reinforcement = FALSE}
-#' @param nmin Minimum number of observations reqired in an internal node to perform a split. Set this to twice of the desired terminal node size.
+#' @param nmin Minimum number of observations required in an internal node to perform a split. Set this to twice of the desired terminal node size.
 #' @param alpha Minimum number of observations required for each child node as a portion of the parent node. Must be within \code{(0, 0.5]}.
 #' @param split.gen How the cutting points are generated
 #' @param nsplit Number of random cutting points to compare for each variable at an internal node
@@ -23,10 +23,10 @@
 #' @param reinforcement If reinforcement splitting rules should be used. There are default values for all tuning parameters under this feature.
 #' @param muting Muting method, \code{-1} for muting by proportion, positive for muting by count
 #' @param muting.percent Only for \code{muting = -1} the proportion of muting
-#' @param protect Number of protected variables that will not be muted. These variables are adaptived selected for each tree.
+#' @param protect Number of protected variables that will not be muted. These variables are adaptively selected for each tree.
 #' @param combsplit Number of variables used in a combination split. \code{combsplit = 1} gives regular binary split; \code{combsplit > 1} produces linear combination splits.
-#' @param combsplit.th The mininum threshold (as a relative measurement compared to the best variable) for a variable to be used in the combination split.
-#' @param random.select Randomly select a varaible from the top variable in the linear combination as the splitting rule.
+#' @param combsplit.th The minimum threshold (as a relative measurement compared to the best variable) for a variable to be used in the combination split.
+#' @param random.select Randomly select a variable from the top variable in the linear combination as the splitting rule.
 #' @param embed.n.th Number of observations to stop the embedded model and choose randomly from the current protected variables.
 #' @param embed.ntrees Number of embedded trees
 #' @param embed.resample.prob Proportion of in-bag samples for embedded trees
@@ -65,7 +65,7 @@
 #' mean((RLT.pred$Prediction - testy)^2)
 #'
 #' # Reinforcement Learning Trees, using an embedded model to find the splitting rule
-#' \dontrun{
+#' \donttest{
 #' Mark0 = proc.time()
 #' RLT.fit = RLT(trainx, trainy, model = "regression", use.cores = 6, ntrees = 100,
 #'               importance = TRUE, reinforcement = TRUE, combsplit = 3, embed.ntrees = 25)
@@ -75,7 +75,7 @@
 #' RLT.pred = predict(RLT.fit, testx)
 #' mean((RLT.pred$Prediction - testy)^2)
 #' }
-
+#' @export
 RLT <- function(x, y, censor = NULL, model = "regression",
 				print.summary = 0,
 				use.cores = 1,

@@ -9,7 +9,7 @@
 #' y = rowMeans(x)
 #' fit = RLT(x, y, ntrees = 5)
 #' predict(fit, x)
-
+##' @export
 predict.RLT <- function(object, testx, ...)
 {
 	# check test data
