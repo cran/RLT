@@ -1,6 +1,6 @@
 Package: RLT
-Version: 3.2.5
-Date: 2023-02-14
+Version: 3.2.6
+Date: 2023-04-28
 Title: Reinforcement Learning Trees
 Authors@R: c(person("Ruoqing", "Zhu",
                     email = "teazrq@gmail.com", 
@@ -17,7 +17,7 @@ NeedsCompilation: yes
 Repository: CRAN
 Encoding: UTF-8
 RoxygenNote: 7.2.3
-Packaged: 2023-02-17 17:03:21 UTC; Ruoqing Zhu
+Packaged: 2023-04-28 09:24:48 UTC; zrq
 Author: Ruoqing Zhu [aut, cre, cph] (<https://orcid.org/0000-0002-0753-5716>)
 Maintainer: Ruoqing Zhu <teazrq@gmail.com>
-Date/Publication: 2023-02-17 23:40:07 UTC
+Date/Publication: 2023-04-28 10:50:02 UTC
